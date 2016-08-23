@@ -1,0 +1,23 @@
+{
+  "name": "node-mailtest",
+  "version": "1.0.0",
+  "description": "Wrapper for Mailtest",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/campvanilla/node-mailtest.git"
+  },
+  "keywords": [
+    "wrapper",
+    "api"
+  ],
+  "author": "CampVanilla",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/campvanilla/node-mailtest/issues"
+  },
+  "homepage": "https://github.com/campvanilla/node-mailtest#readme"
+}
