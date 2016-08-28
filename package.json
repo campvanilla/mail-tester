@@ -1,6 +1,6 @@
 {
-  "name": "node-mailtest",
-  "version": "1.0.1",
+  "name": "mail-tester",
+  "version": "1.0.0",
   "description": "Wrapper for Mailtest",
   "main": "mail-tester.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/campvanilla/node-mailtest.git"
+    "url": "git+https://github.com/campvanilla/mail-tester.git"
   },
   "keywords": [
     "wrapper",
@@ -17,9 +17,9 @@
   "author": "CampVanilla",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/campvanilla/node-mailtest/issues"
+    "url": "https://github.com/campvanilla/mail-tester/issues"
   },
-  "homepage": "https://github.com/campvanilla/node-mailtest#readme",
+  "homepage": "https://github.com/campvanilla/mail-tester#readme",
   "devDependencies": {
     "faucet": "0.0.1",
     "tape": "^4.6.0"
