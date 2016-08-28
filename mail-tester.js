@@ -60,7 +60,7 @@ function handleMailtestResponse(error, response, body){
 	}
 };
 
-mailtester.check = function (email, callback){
+mailTester.check = function (email, callback){
 	var validated = prevalidate(email), 
 		result = {},
 		requestURL = '';
