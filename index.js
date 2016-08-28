@@ -32,29 +32,40 @@ mailtester.check = function (email, callback){
 	var validated = prevalidate(email), 
 		result = {},
 		requestURL = '';
-
+	// console.log(validated);
 	if(validated.valid) {
 		requestURL = MAILTEST_IN_URL + validated.domain;
+		console.log(requestURL);
 		request(requestURL, function(error, response, body){
-			if(!error && response.statusCode === 200){
+			// console.log(response.statusCode);
+			// console.log(error);
+			// console.log(body);
+			body = JSON.parse(body);
+			if(!error && response.statusCode == 200){
 				result = {
 					status: body.status,
 					code: body.code,
 					message: body.message,
 					email: email
 				};
+				console.log(result);
 				callback(result);
 			}
 			else {
-				//something
+				result = {
+					code: '02',
+					message: 'wat'
+				};
+				console.log(result);
+				callback(result);
 			}
 		});
 	}
 	else {
 		result = {
-			code: 0,
-			status: 'ERROR',
-			message: 'INVALID_EMAIL'
+			code: '00',
+			status: 'INVALID_EMAIL',
+			message: 'INVALID EMAIL'
 		};
 		callback(result);
 	}
