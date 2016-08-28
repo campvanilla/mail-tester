@@ -1,4 +1,4 @@
-var mailTest = require('./index.js');
+var mailTest = require('./mail-tester.js');
 var test = require('tape');
 
 test('should get ACTIVE', function(assert) {

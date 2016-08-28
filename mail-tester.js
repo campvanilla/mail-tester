@@ -1,7 +1,7 @@
 'use strict';
 var request = require('request');
 
-var mailtester = {},
+var mailTester = {},
 	MAILTEST_IN_URL = 'http://api.mailtest.in/v1/';
 
 function prevalidate (email){
@@ -20,13 +20,6 @@ function prevalidate (email){
 	}
 
 	return result;
-
-	// return  
-	// {
-	// 	valid: true,
-	// 	email: abc@xyz.abc,
-	// 	domain: xyz.abc
-	// };
 };
 
 function handleMailtestResponse(error, response, body){
@@ -91,4 +84,4 @@ mailtester.check = function (email, callback){
 	}
 };
 
-module.exports = mailtester;
+module.exports = mailTester;
