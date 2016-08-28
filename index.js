@@ -48,15 +48,16 @@ mailtester.check = function (email, callback){
 					message: body.message,
 					email: email
 				};
-				console.log(result);
+				//console.log(result);
 				callback(result);
 			}
 			else {
 				result = {
-					code: '02',
-					message: 'wat'
+					code: '90',
+					message: 'Possible error with Mailtest.in',
+					status: 'ERROR',
 				};
-				console.log(result);
+				//console.log(result);
 				callback(result);
 			}
 		});

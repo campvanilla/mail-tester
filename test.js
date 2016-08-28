@@ -21,7 +21,7 @@ test('should get DISPOSABLE', function(assert) {
 
 	mailTest.check(email, function(data) {
 		
-		assert.equal(data.code, '02');
+		assert.equal(data.code, '11');
 		assert.equal(data.status, 'DISPOSABLE');
 		assert.end();
 
@@ -35,7 +35,7 @@ test('should get ROBOT', function(assert) {
 
 	mailTest.check(email, function(data) {
 		
-		assert.equal(data.code, '03');
+		assert.equal(data.code, '12');
 		assert.equal(data.status, 'ROBOT');
 		assert.end();
 
@@ -49,7 +49,7 @@ test('should get INVALID', function(assert) {
 
 	mailTest.check(email, function(data) {
 		
-		assert.equal(data.code, '04');
+		assert.equal(data.code, '21');
 		assert.equal(data.status, 'INVALID');
 		assert.end();
 
@@ -63,8 +63,8 @@ test('should get UNKNOWN', function(assert) {
 
 	mailTest.check(email, function(data) {
 		
-		assert.equal(data.code, '05');
-		assert.equal(data.status, 'ACTIVE');
+		assert.equal(data.code, '82');
+		assert.equal(data.status, 'UNKNOWN');
 		assert.end();
 
 	})
@@ -77,7 +77,7 @@ test('should get ERROR', function(assert) {
 
 	mailTest.check(email, function(data) {
 		
-		assert.equal(data.code, '06');
+		assert.equal(data.code, '90');
 		assert.equal(data.status, 'ERROR');
 		assert.end();
 
