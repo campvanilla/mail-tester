@@ -4,6 +4,22 @@ var mailtester = {},
 	MAILTEST_IN_URL = 'http://api.mailtest.in/v1/';
 
 function prevalidate (email){
+
+	var pattern = /^[a-zA-z0-9._]+[@][a-zA-Z0-9]+[.][a-zA-Z0-9.]+$/;
+	var result = {};
+
+	if (email.match(pattern)) {
+		result.valid = true;
+		result.email = email;
+		result.domain = email.substring(email.indexOf("@")+1,email.length);
+	} else {
+		result.valid = false;
+		result.email = email;
+		result.domain = "n/a";
+	}
+
+	return result;
+
 	// return  
 	// {
 	// 	valid: true,
@@ -11,7 +27,6 @@ function prevalidate (email){
 	// 	domain: xyz.abc
 	// };
 };
-
 
 mailtester.check = function (email, callback){
 	var validated = prevalidate(email), 
@@ -43,10 +58,6 @@ mailtester.check = function (email, callback){
 		};
 		callback(result);
 	}
-};
-
-mailtester.checkThese = function (){
-
 };
 
 module.exports = mailtester;
