@@ -77,7 +77,6 @@ mailtester.check = function (email, callback){
 		
 		request(requestURL, function(error, response, body){
 			error = JSON.parse(error);
-			response = JSON.parse(response);
 			body = JSON.parse(body);
 			callback(handleMailtestResponse(error, response, body));
 		});

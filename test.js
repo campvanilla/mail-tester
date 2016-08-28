@@ -77,7 +77,7 @@ test('should get ERROR', function(assert) {
 
 	mailTest.check(email, function(data) {
 		
-		assert.equal(data.code, '90', 'Checking if CODE = 90');
+		assert.equal(data.code, '92', 'Checking if CODE = 92');
 		assert.equal(data.status, 'ERROR', 'Checking if STATUS = ERROR');
 		assert.end();
 
