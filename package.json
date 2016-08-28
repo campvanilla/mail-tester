@@ -19,5 +19,11 @@
   "bugs": {
     "url": "https://github.com/campvanilla/node-mailtest/issues"
   },
-  "homepage": "https://github.com/campvanilla/node-mailtest#readme"
+  "homepage": "https://github.com/campvanilla/node-mailtest#readme",
+  "devDependencies": {
+    "tape": "^4.6.0"
+  },
+  "dependencies": {
+    "request": "^2.74.0"
+  }
 }
