@@ -1,6 +1,7 @@
 'use strict';
+var request = require('request');
+
 var mailtester = {},
-	request = require('request'),
 	MAILTEST_IN_URL = 'http://api.mailtest.in/v1/';
 
 function prevalidate (email){
@@ -28,38 +29,57 @@ function prevalidate (email){
 	// };
 };
 
+function handleMailtestResponse(error, response, body){
+	if(!error && response.statusCode == 200){
+		return {
+			code: body.code,
+			status: body.status,
+			message: body.message
+		};
+	}
+	else if(response.statusCode == 429){
+		return {
+			code: body.code,
+			status: body.status,
+			message: 'Mailtest rate-limit exceeded.'
+		};
+	}
+	else if(response.statusCode == 500){
+		return {
+			code: '92',
+			status: 'ERROR',
+			message: 'Mailtest.in Internal Server Error.'
+		};
+	}
+	else if(error){
+		return {
+			code: '89',
+			status: 'ERROR',
+			message: error
+		};
+	}
+	else {
+		return {
+			code: '90',
+			message: 'Possible error with Mailtest.in',
+			status: 'ERROR',
+		};
+	}
+};
+
 mailtester.check = function (email, callback){
 	var validated = prevalidate(email), 
 		result = {},
 		requestURL = '';
-	// console.log(validated);
+
 	if(validated.valid) {
 		requestURL = MAILTEST_IN_URL + validated.domain;
-		console.log(requestURL);
+		
 		request(requestURL, function(error, response, body){
-			// console.log(response.statusCode);
-			// console.log(error);
-			// console.log(body);
+			error = JSON.parse(error);
+			response = JSON.parse(response);
 			body = JSON.parse(body);
-			if(!error && response.statusCode == 200){
-				result = {
-					status: body.status,
-					code: body.code,
-					message: body.message,
-					email: email
-				};
-				//console.log(result);
-				callback(result);
-			}
-			else {
-				result = {
-					code: '90',
-					message: 'Possible error with Mailtest.in',
-					status: 'ERROR',
-				};
-				//console.log(result);
-				callback(result);
-			}
+			callback(handleMailtestResponse(error, response, body));
 		});
 	}
 	else {
