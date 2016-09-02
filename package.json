@@ -4,7 +4,8 @@
   "description": "Wrapper for Mailtest",
   "main": "mail-tester.js",
   "scripts": {
-    "test": "node test.js | faucet"
+    "test": "node test.js | faucet",
+    "buildtest": "istanbul cover test.js"
   },
   "repository": {
     "type": "git",
@@ -21,7 +22,9 @@
   },
   "homepage": "https://github.com/campvanilla/mail-tester#readme",
   "devDependencies": {
+    "codeclimate-test-reporter": "^0.3.3",
     "faucet": "0.0.1",
+    "istanbul": "^0.4.5",
     "tape": "^4.6.0"
   },
   "dependencies": {

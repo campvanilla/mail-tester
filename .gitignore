@@ -1,3 +1,11 @@
+# Mac files
 .DS_Store
+
+# Dependency Directoryu
 node_modules
+
+# Any logfiles
 *.log
+
+# Coverage directory for istanbul
+coverage

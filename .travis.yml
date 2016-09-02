@@ -3,3 +3,14 @@ node_js:
   - "6"
   - "5"
   - "4"
+branches:
+  only:
+    - master
+before script:
+  npm install -g istanbul
+  npm install -g codeclimate-test-reporter
+script:
+  - npm run buildtest
+after_success:
+  - code_climate < ./coverage/lcov.info
+
