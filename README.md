@@ -4,6 +4,8 @@
 [![Code Climate](https://codeclimate.com/github/campvanilla/mail-tester/badges/gpa.svg)](https://codeclimate.com/github/campvanilla/mail-tester)
 [![Test Coverage](https://codeclimate.com/github/campvanilla/mail-tester/badges/coverage.svg)](https://codeclimate.com/github/campvanilla/mail-tester/coverage)
 
+[![NPM](https://nodei.co/npm/mail-tester.png)](https://nodei.co/npm/mail-tester/)
+
 Mail-tester is an npm module, that uses the [MailTest-API] to easily check whether an email being used in your node application is
 - a valid email ID
 - a disposable email ID
