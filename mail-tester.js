@@ -4,7 +4,7 @@ var request = require('request');
 var mailTester = {},
 	MAILTEST_IN_URL = 'http://api.mailtest.in/v1/';
 
-function prevalidate (email){
+var prevalidate = function (email){
 
 	var pattern = /^[a-zA-z0-9._]+[@][a-zA-Z0-9]+[.][a-zA-Z0-9.]+$/;
 	var result = {};
@@ -22,22 +22,23 @@ function prevalidate (email){
 	return result;
 };
 
-function handleMailtestResponse(error, response, body){
-	if(!error && response.statusCode == 200){
+var handleMailtestResponse = function (error, response, body){
+	var responseStatusCode = parseInt(response.statusCode, 10);
+	if(!error && responseStatusCode === 200){
 		return {
 			code: body.code,
 			status: body.status,
 			message: body.message
 		};
 	}
-	else if(response.statusCode == 429){
+	else if(responseStatusCode === 429){
 		return {
 			code: body.code,
 			status: body.status,
 			message: 'Mailtest rate-limit exceeded.'
 		};
 	}
-	else if(response.statusCode == 500){
+	else if(responseStatusCode === 500){
 		return {
 			code: '92',
 			status: 'ERROR',
@@ -55,7 +56,7 @@ function handleMailtestResponse(error, response, body){
 		return {
 			code: '90',
 			message: 'Possible error with Mailtest.in',
-			status: 'ERROR',
+			status: 'ERROR'
 		};
 	}
 };
@@ -71,7 +72,7 @@ mailTester.check = function (email, callback){
 		request(requestURL, function(error, response, body){
 			error = JSON.parse(error);
 			body = JSON.parse(body);
-			callback(handleMailtestResponse(error, response, body));
+			return callback(handleMailtestResponse(error, response, body));
 		});
 	}
 	else {
@@ -80,7 +81,7 @@ mailTester.check = function (email, callback){
 			status: 'INVALID_EMAIL',
 			message: 'INVALID EMAIL'
 		};
-		callback(result);
+		return callback(result);
 	}
 };
 
