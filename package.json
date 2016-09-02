@@ -1,7 +1,7 @@
 {
   "name": "mail-tester",
   "version": "1.0.0",
-  "description": "Wrapper for Mailtest",
+  "description": "A wrapper library that uses the MailTest-API to easily check whether an email being used in your node application is valid, disposable, invalid or a robot domain.",
   "main": "mail-tester.js",
   "scripts": {
     "test": "node test.js | faucet",
@@ -11,10 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/campvanilla/mail-tester.git"
   },
-  "keywords": [
-    "wrapper",
-    "api"
-  ],
+  "keywords": [ "wrapper", "api", "mail", "test", "mailtest", "node", "nodejs api" ],
   "author": "CampVanilla",
   "license": "MIT",
   "bugs": {
